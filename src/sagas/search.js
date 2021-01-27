@@ -3,7 +3,7 @@ import { put, takeLatest } from "redux-saga/effects";
 function* fetchPlayers({ value }) {
   const json =
     value === ""
-      ? { data: [] }
+      ? { data: undefined }
       : yield fetch(
           `https://www.balldontlie.io/api/v1/players?search=${value}`
         ).then((response) => response.json());

@@ -2,9 +2,36 @@ html,
 body,
 #root,
 .App {
-  height: 100%;
+  height: 100vh;
+  margin: 0;
+  font-family: Helvetica, sans-serif;
 }
 
 body {
-  background: #ffffff !important;
+  background: #17408b !important;
+}
+
+input {
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#search-only-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    position: absolute;
+    top: 25%;
+    color: #fff;
+    font-size: 50px;
+    letter-spacing: -2px;
+  }
+
+  #search-bar {
+    width: 30%;
+  }
 }
