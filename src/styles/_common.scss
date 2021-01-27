@@ -1,3 +1,6 @@
+$red: #c9082a;
+$blue: #17408b;
+
 html,
 body,
 #root,
@@ -8,13 +11,20 @@ body,
 }
 
 body {
-  background: #17408b !important;
+  background: $blue !important;
 }
 
 input {
   font-family: Helvetica, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+h1 {
+  color: #fff;
+  font-size: 50px;
+  letter-spacing: -2px;
+  margin: 0;
 }
 
 #search-only-container {
@@ -26,9 +36,6 @@ input {
   h1 {
     position: absolute;
     top: 25%;
-    color: #fff;
-    font-size: 50px;
-    letter-spacing: -2px;
   }
 
   #search-bar {

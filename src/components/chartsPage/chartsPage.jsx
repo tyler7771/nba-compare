@@ -1,12 +1,10 @@
+import Header from "./header";
 import React from "react";
-import SearchBar from "../search/searchBar";
 import { connect } from "react-redux";
 
 let ChartsPage = ({ players }) => (
   <>
-    <div id="header">
-      <SearchBar />
-    </div>
+    <Header />
     {players.map((player, i) => (
       <span key={i}>{player.first_name}</span>
     ))}

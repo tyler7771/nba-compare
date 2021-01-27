@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import { getPlayer } from "../../actions/playerActions";
 import { getPlayers } from "../../actions/searchActions";
 
-let SearchBar = ({ getPlayer, getPlayers, players }) => (
+let SearchBar = ({ displayCount, getPlayer, getPlayers, players }) => (
   <div id="search-bar">
-    <input placeholder="Search for Player (ex: Lebron james)" onChange={(e) => getPlayers(e.target.value)} />
+    <input
+      placeholder="Search for Player (ex: Lebron james)"
+      onChange={(e) => getPlayers(e.target.value, displayCount)}
+    />
     {players && (
       <ul>
         {players.map((el, i) => (
@@ -24,8 +27,9 @@ const mapDispatchToProps = {
   getPlayers: getPlayers,
 };
 
-const mapStatetoProps = (state) => ({
+const mapStatetoProps = (state, ownProps) => ({
   players: state.search.players,
+  displayCount: ownProps.displayCount,
 });
 
 SearchBar = connect(mapStatetoProps, mapDispatchToProps)(SearchBar);

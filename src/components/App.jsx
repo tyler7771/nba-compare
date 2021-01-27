@@ -8,7 +8,7 @@ let App = ({ players }) => (
     {players.length === 0 && (
       <div id="search-only-container">
         <h1>NBA COMPARE</h1>
-        <Search />
+        <Search displayCount={25} />
       </div>
     )}
     {players.length !== 0 && <ChartsPage />}

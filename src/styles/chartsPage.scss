@@ -1,0 +1,18 @@
+@import "_common";
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background: $red;
+  border-bottom: 2px solid #fff;
+
+  h1 {
+    font-size: 35px;
+  }
+
+  #search-bar {
+    width: 20%;
+  }
+}

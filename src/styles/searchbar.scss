@@ -1,3 +1,5 @@
+@import "_common";
+
 #search-bar {
   position: relative;
 
@@ -22,7 +24,7 @@
 
   ul {
     position: absolute;
-    background-color: #c9082a;
+    background-color: $red;
     margin: 0;
     padding: 0;
     width: 100%;

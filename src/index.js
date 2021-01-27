@@ -4,7 +4,7 @@ import * as serviceWorker from "./serviceWorker";
 
 import { applyMiddleware, createStore } from "@reduxjs/toolkit";
 
-import App from "./components/App";
+import App from "./components/App.jsx";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
