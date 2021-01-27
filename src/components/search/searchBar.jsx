@@ -11,11 +11,11 @@ let SearchBar = ({ displayCount, getPlayer, getPlayers, players }) => (
     />
     {players && (
       <ul>
-        {players.map((el, i) => (
+        {players.map((player, i) => (
           <li
-            onClick={() => getPlayer(el.id)}
+            onClick={() => getPlayer(player.id)}
             key={`player-${i}`}
-          >{`${el.first_name} ${el.last_name} - ${el.team.abbreviation}`}</li>
+          >{`${player.first_name} ${player.last_name} - ${player.team.abbreviation}`}</li>
         ))}
       </ul>
     )}

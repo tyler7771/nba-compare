@@ -40,11 +40,15 @@ const initialState = {
 };
 
 const searchReducer = (state = initialState, action) => {
+  let newData;
   switch (action.type) {
     case "GET_PLAYER":
       return { ...state, loading: true };
     case "RECIEVE_PLAYER":
-      const newData = state.data.concat([action.json]);
+      newData = state.data.concat([action.json]);
+      return { ...state, data: newData, loading: false };
+    case "REMOVE_PLAYER":
+      newData = state.data.filter((player) => player.id !== action.id);
       return { ...state, data: newData, loading: false };
     default:
       return state;

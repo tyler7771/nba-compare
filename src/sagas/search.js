@@ -5,7 +5,7 @@ function* fetchPlayers({ value, paginationCount }) {
     value === ""
       ? { data: undefined }
       : yield fetch(
-          `https://www.balldontlie.io/api/v1/players?per_page=${paginationCount}search=${value}`
+          `https://www.balldontlie.io/api/v1/players?per_page=${paginationCount}&search=${value}`
         ).then((response) => response.json());
 
   yield put({

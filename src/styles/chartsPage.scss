@@ -12,7 +12,32 @@
     font-size: 35px;
   }
 
-  #search-bar {
-    width: 20%;
+  #search-container {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .player-pill {
+      margin-right: 5px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      transition: all 0.2s ease-in-out;
+      border: 1px solid white;
+
+      span {
+        margin-left: 5px;
+        margin-right: -3px;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+    }
+
+    #search-bar {
+      width: 20%;
+    }
   }
 }
