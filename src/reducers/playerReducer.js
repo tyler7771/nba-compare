@@ -1,22 +1,22 @@
 const initialState = {
   data: [
     {
-      first_name: "Malcolm",
+      id: 54,
+      first_name: "Bojan",
       height_feet: 6,
-      height_inches: 5,
-      id: 65,
-      last_name: "Brogdon",
-      position: "G",
+      height_inches: 8,
+      last_name: "Bogdanovic",
+      position: "F",
       team: {
-        abbreviation: "IND",
-        city: "Indiana",
-        conference: "East",
-        division: "Central",
-        full_name: "Indiana Pacers",
-        id: 12,
-        name: "Pacers",
+        id: 29,
+        abbreviation: "UTA",
+        city: "Utah",
+        conference: "West",
+        division: "Northwest",
+        full_name: "Utah Jazz",
+        name: "Jazz",
       },
-      weight_pounds: 229,
+      weight_pounds: 216,
     },
     {
       first_name: "Jeremy",
@@ -41,6 +41,7 @@ const initialState = {
 
 const searchReducer = (state = initialState, action) => {
   let newData;
+
   switch (action.type) {
     case "GET_PLAYER":
       return { ...state, loading: true };
