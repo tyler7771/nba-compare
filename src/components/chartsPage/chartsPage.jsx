@@ -1,13 +1,12 @@
 import Header from "./header";
+import RadarTab from "./radarTab";
 import React from "react";
 import { connect } from "react-redux";
 
 let ChartsPage = ({ players }) => (
   <>
     <Header />
-    {players.map((player, i) => (
-      <span key={i}>{player.first_name}</span>
-    ))}
+    <RadarTab />
   </>
 );
 

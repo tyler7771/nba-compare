@@ -1,4 +1,4 @@
-const searchReducer = (state = {}, action) => {
+const SearchReducer = (state = {}, action) => {
   switch (action.type) {
     case "GET_PLAYERS":
       return { ...state, loading: true };
@@ -11,4 +11,4 @@ const searchReducer = (state = {}, action) => {
   }
 };
 
-export default searchReducer;
+export default SearchReducer;

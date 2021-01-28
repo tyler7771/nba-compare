@@ -39,7 +39,7 @@ const initialState = {
   ],
 };
 
-const searchReducer = (state = initialState, action) => {
+const PlayerReducer = (state = initialState, action) => {
   let newData;
 
   switch (action.type) {
@@ -56,4 +56,4 @@ const searchReducer = (state = initialState, action) => {
   }
 };
 
-export default searchReducer;
+export default PlayerReducer;
