@@ -36,6 +36,24 @@ const initialState = {
       },
       weight_pounds: 185,
     },
+    {
+      first_name: "LeBron",
+      height_feet: 6,
+      height_inches: 8,
+      id: 237,
+      last_name: "James",
+      position: "F",
+      team: {
+        abbreviation: "LAL",
+        city: "Los Angeles",
+        conference: "West",
+        division: "Pacific",
+        full_name: "Los Angeles Lakers",
+        id: 14,
+        name: "Lakers",
+      },
+      weight_pounds: 250,
+    },
   ],
 };
 

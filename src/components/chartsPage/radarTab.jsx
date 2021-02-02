@@ -10,7 +10,7 @@ let RadarTab = ({ players, getSeasonAverages, seasonAverages }) => {
   useEffect(() => {
     const searchString = generateSearchString();
     getSeasonAverages(searchString);
-  }, []);
+  }, [JSON.stringify(players)]);
 
   const generateSearchString = () => {
     let str = "";
@@ -25,7 +25,13 @@ let RadarTab = ({ players, getSeasonAverages, seasonAverages }) => {
   return (
     <div>
       {seasonAverages &&
-        players.map((player, i) => <RadarCard player={player} key={`radar-card-${i}`} stats={seasonAverages[i]} />)}
+        players.map((player, i) => (
+          <RadarCard
+            player={player}
+            key={`radar-card-${i}`}
+            stats={seasonAverages[i]}
+          />
+        ))}
     </div>
   );
 };
