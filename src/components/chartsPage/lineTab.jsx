@@ -8,6 +8,7 @@ import { mapStatsLabel, statsSelectDropdownArr } from "./pageHelpers";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import LineCard from "./charts/lineCard";
+import Spinner from "react-bootstrap/Spinner";
 import { connect } from "react-redux";
 
 let LineTab = ({
@@ -42,8 +43,14 @@ let LineTab = ({
           *All stats are from the 2020-2021 season
         </span>
       </div>
-      {lastTen.length === players.length && (
+      {lastTen.length === players.length ? (
         <LineCard players={players} stats={lastTen} stat={stat} />
+      ) : (
+        <div className="spinner-container">
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        </div>
       )}
     </>
   );
