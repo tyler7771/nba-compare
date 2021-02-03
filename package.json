@@ -14,6 +14,7 @@
     "chart.js": "^2.9.4",
     "nba-color": "^1.4.1",
     "node-sass": "^4.14.1",
+    "rcolor": "^2.0.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-chartjs-2": "^2.11.1",

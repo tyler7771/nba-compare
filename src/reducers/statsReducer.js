@@ -1,8 +1,6 @@
 import orderById from "./orderByHelper";
 
-const StatsReducer = (state = {}, action) => {
-  let newData;
-
+const StatsReducer = (state = { lastTen: [] }, action) => {
   switch (action.type) {
     case "GET_SEASON_AVERAGES":
       return { ...state, loading: true };
@@ -12,9 +10,14 @@ const StatsReducer = (state = {}, action) => {
         seasonAverages: orderById(action.data),
         loading: false,
       };
-    case "REMOVE_PLAYER_STAT":
-      newData = state.data.filter((stats) => stats.player_id !== action.id);
-      return { ...state, data: newData, loading: false };
+    case "CLEAR_LAST_TEN_STATS":
+      return { ...state, lastTen: [], loading: false };
+    case "RECIEVE_LAST_TEN_STATS":
+      return {
+        ...state,
+        lastTen: [...state.lastTen, action.lastTen],
+        loading: false,
+      };
     default:
       return state;
   }

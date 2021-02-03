@@ -3,7 +3,7 @@ import { generateSearchString, getStats } from "./pageHelpers";
 
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import PieCard from "./charts/doughnutCard";
+import DoughnutCard from "./charts/doughnutCard";
 import Row from "react-bootstrap/Row";
 import { connect } from "react-redux";
 import { getSeasonAverages } from "../../actions/statsActions";
@@ -52,7 +52,7 @@ let RadarTab = ({ players, getSeasonAverages, seasonAverages }) => {
       <Row>
         {seasonAverages &&
           players.map((player, i) => (
-            <PieCard
+            <DoughnutCard
               player={player}
               key={`pie-card-${i}`}
               stats={getStats(player.id, seasonAverages)}

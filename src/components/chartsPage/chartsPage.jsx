@@ -5,6 +5,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Container from "react-bootstrap/Container";
 import DoughNutTab from "./doughnutTab";
 import Header from "./header";
+import LineTab from "./lineTab";
 import RadarTab from "./radarTab";
 
 let ChartsPage = () => {
@@ -17,7 +18,7 @@ let ChartsPage = () => {
       case 2:
         return <DoughNutTab />;
       case 3:
-        return <RadarTab />;
+        return <LineTab />;
       default:
         return null;
     }
@@ -44,7 +45,7 @@ let ChartsPage = () => {
             onClick={() => setPage(3)}
             variant={`${currentPage === 3 ? "primary" : "outline-primary"}`}
           >
-            Last 10
+            Last 10 Games
           </Button>
         </ButtonGroup>
       </Container>
