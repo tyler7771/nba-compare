@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Container from "react-bootstrap/Container";
+import DoughNutTab from "./doughnutTab";
 import Header from "./header";
 import RadarTab from "./radarTab";
 
@@ -14,7 +15,7 @@ let ChartsPage = () => {
       case 1:
         return <RadarTab />;
       case 2:
-        return <RadarTab />;
+        return <DoughNutTab />;
       case 3:
         return <RadarTab />;
       default:

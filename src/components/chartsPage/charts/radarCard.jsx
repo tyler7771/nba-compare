@@ -42,6 +42,21 @@ let RadarCard = ({ player, stats, isOffenseStats, removePlayer }) => {
     scale: {
       ticks: { beginAtZero: true },
     },
+    tooltips: {
+      callbacks: {
+        title: () => {},
+        label: (tooltipItem, data) => {
+          const label = data.labels[tooltipItem.index];
+          data = data.datasets[0].data[tooltipItem.index];
+
+          if (isOffenseStats) {
+            return `${label}: ${Math.round(data)}%`;
+          } else {
+            return `${label}: ${data}`;
+          }
+        },
+      },
+    },
   };
 
   const mapPosition = (position) => {

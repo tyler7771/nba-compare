@@ -3,13 +3,13 @@ import { generateSearchString, getStats } from "./pageHelpers";
 
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import RadarCard from "./charts/radarCard";
+import PieCard from "./charts/doughnutCard";
 import Row from "react-bootstrap/Row";
 import { connect } from "react-redux";
 import { getSeasonAverages } from "../../actions/statsActions";
 
 let RadarTab = ({ players, getSeasonAverages, seasonAverages }) => {
-  const [isOffenseStats, setIsOffenseStats] = useState(true);
+  const [shootingStats, setShootingStats] = useState("ft");
 
   useEffect(() => {
     const searchString = generateSearchString(players);
@@ -21,27 +21,39 @@ let RadarTab = ({ players, getSeasonAverages, seasonAverages }) => {
       <div id="radar-btn-container">
         <ButtonGroup size="lg">
           <Button
-            onClick={() => setIsOffenseStats(true)}
-            variant={`${isOffenseStats ? "primary" : "outline-primary"}`}
+            onClick={() => setShootingStats("ft")}
+            variant={`${
+              shootingStats === "ft" ? "primary" : "outline-primary"
+            }`}
           >
-            Offensive Stats
+            Free Throw %
           </Button>
           <Button
-            onClick={() => setIsOffenseStats(false)}
-            variant={`${!isOffenseStats ? "primary" : "outline-primary"}`}
+            onClick={() => setShootingStats("fg")}
+            variant={`${
+              shootingStats === "fg" ? "primary" : "outline-primary"
+            }`}
           >
-            Defensive Stats
+            Field Goal %
+          </Button>
+          <Button
+            onClick={() => setShootingStats("fg3")}
+            variant={`${
+              shootingStats === "fg3" ? "primary" : "outline-primary"
+            }`}
+          >
+            3 Point %
           </Button>
         </ButtonGroup>
       </div>
       <Row>
         {seasonAverages &&
           players.map((player, i) => (
-            <RadarCard
+            <PieCard
               player={player}
-              key={`radar-card-${i}`}
+              key={`pie-card-${i}`}
               stats={getStats(player.id, seasonAverages)}
-              isOffenseStats={isOffenseStats}
+              shootingStats={shootingStats}
             />
           ))}
       </Row>

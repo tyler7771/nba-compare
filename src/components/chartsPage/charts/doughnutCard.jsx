@@ -1,29 +1,30 @@
 import * as NBAIcons from "react-nba-logos";
 
+import { getMainColor, getSecondaryColor } from "nba-color";
+
 import Col from "react-bootstrap/Col";
+import { Doughnut } from "react-chartjs-2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Radar } from "react-chartjs-2";
 import React from "react";
 import { connect } from "react-redux";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { getMainColor } from "nba-color";
 import { removePlayer } from "../../../actions/playerActions";
 import { removePlayerStats } from "../../../actions/statsActions";
 
-let PieCard = ({ player, stats, isOffenseStats, removePlayer }) => {
+let DoughNutCard = ({ player, stats, shootingStats, removePlayer }) => {
   const Icon = NBAIcons[player.team.abbreviation];
 
   const data = () => {
-    const color = getMainColor(player.team.abbreviation).rgb;
-    const backgroundColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.3)`;
-    const borderColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`;
-    const { ast, blk, fg_pct, fg3_pct, ft_pct, reb, stl, turnover } = stats;
-    const labels = isOffenseStats
-      ? ["Field Goal %", "3 Point %", "Free Throw %"]
-      : ["Assists", "Blocks", "Rebounds", "Steals", "Turnovers"];
-    const data = isOffenseStats
-      ? [fg_pct * 100, fg3_pct * 100, ft_pct * 100]
-      : [ast, blk, reb, stl, turnover];
+    const color1 = getMainColor(player.team.abbreviation).hex;
+    const color2 = getSecondaryColor(player.team.abbreviation).hex;
+    const backgroundColor = [color1, color2];
+
+    const labels = ["Made", "Miss"];
+
+    const attempt = stats[`${shootingStats}a`];
+    const made = stats[`${shootingStats}m`];
+    const miss = attempt - made;
+    const data = [made, miss];
 
     return {
       labels,
@@ -31,16 +32,24 @@ let PieCard = ({ player, stats, isOffenseStats, removePlayer }) => {
         {
           data,
           backgroundColor,
-          borderColor,
-          borderWidth: 1,
         },
       ],
     };
   };
 
   const options = {
-    scale: {
-      ticks: { beginAtZero: true },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          const percent =
+            tooltipItem.index === 0
+              ? stats[`${shootingStats}_pct`] * 100
+              : 100 - stats[`${shootingStats}_pct`] * 100;
+          return `${data.labels[tooltipItem.index]}: ${
+            data.datasets[0].data[tooltipItem.index]
+          } of ${stats[`${shootingStats}a`]} (${Math.round(percent)}%)`;
+        },
+      },
     },
   };
 
@@ -59,7 +68,10 @@ let PieCard = ({ player, stats, isOffenseStats, removePlayer }) => {
 
   return (
     <Col xs={12} md={6}>
-      <div className="div" className={`radar-card ${!stats ? "no-stats" : ""}`}>
+      <div
+        className="div"
+        className={`doughnut-card ${!stats ? "no-stats" : ""}`}
+      >
         <FontAwesomeIcon
           icon={faTimesCircle}
           onClick={() => {
@@ -68,10 +80,7 @@ let PieCard = ({ player, stats, isOffenseStats, removePlayer }) => {
           }}
         />
         <div className="player-info">
-          <div className="info-name-logo-container">
-            <h2>{`${player.first_name} ${player.last_name}`}</h2>
-            <Icon />
-          </div>
+          <h2>{`${player.first_name} ${player.last_name}`}</h2>
           <span>
             {player.team.city} {player.team.name}
           </span>
@@ -85,7 +94,16 @@ let PieCard = ({ player, stats, isOffenseStats, removePlayer }) => {
           )}
         </div>
         {stats ? (
-          <Radar data={data()} options={options} legend={{ display: false }} />
+          <>
+            <div className="icon">
+              <Icon />
+            </div>
+            <Doughnut
+              data={data()}
+              options={options}
+              legend={{ display: false }}
+            />
+          </>
         ) : (
           <div className="didnt-play">
             {`${player.first_name} ${player.last_name}`} hasn't played this
@@ -108,5 +126,5 @@ const mapDispatchtoProps = {
   removePlayerStats: removePlayerStats,
 };
 
-PieCard = connect(mapStatetoProps, mapDispatchtoProps)(PieCard);
-export default PieCard;
+DoughNutCard = connect(mapStatetoProps, mapDispatchtoProps)(DoughNutCard);
+export default DoughNutCard;

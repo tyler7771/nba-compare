@@ -123,7 +123,8 @@
     }
   }
 
-  .radar-card {
+  .radar-card,
+  .doughnut-card {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 3px;
@@ -178,6 +179,41 @@
 
     canvas {
       margin-top: -20px;
+    }
+  }
+
+  .doughnut-card {
+    h2 {
+      margin: 0;
+    }
+
+    .icon {
+      svg {
+        position: absolute;
+        top: 61%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @media screen and (max-width: 986px) and (min-width: 870px) {
+          top: 64%;
+          height: 80px;
+          width: 80px;
+        }
+
+        @media screen and (max-width: 869px) and (min-width: 768px) {
+          top: 65%;
+          height: 80px;
+          width: 80px;
+        }
+
+        @media screen and (max-width: 560px) {
+          top: 63%;
+        }
+
+        @media screen and (max-width: 450px) {
+          display: none;
+        }
+      }
     }
   }
 }
