@@ -99,7 +99,8 @@
   #radar-btn-container {
     margin-bottom: 20px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .btn {
       &:focus {
@@ -120,6 +121,12 @@
           background: rgba(23, 64, 139, 0.1);
         }
       }
+    }
+
+    .season-astrisk {
+      margin-top: 5px;
+      font-style: italic;
+      color: #aaa;
     }
   }
 

@@ -38,7 +38,7 @@ let ChartsPage = () => {
             onClick={() => setPage(2)}
             variant={`${currentPage === 2 ? "primary" : "outline-primary"}`}
           >
-            Shooting
+            Shooting %
           </Button>
           <Button
             onClick={() => setPage(3)}

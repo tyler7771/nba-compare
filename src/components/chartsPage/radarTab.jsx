@@ -33,6 +33,9 @@ let RadarTab = ({ players, getSeasonAverages, seasonAverages }) => {
             Defensive Stats
           </Button>
         </ButtonGroup>
+        <span className="season-astrisk">
+          *All stats are from the 2020-2021 season
+        </span>
       </div>
       <Row>
         {seasonAverages &&

@@ -80,7 +80,14 @@ let DoughNutCard = ({ player, stats, shootingStats, removePlayer }) => {
           }}
         />
         <div className="player-info">
-          <h2>{`${player.first_name} ${player.last_name}`}</h2>
+          {!stats ? (
+            <div className="info-name-logo-container">
+              <h2>{`${player.first_name} ${player.last_name}`}</h2>
+              <Icon />
+            </div>
+          ) : (
+            <h2>{`${player.first_name} ${player.last_name}`}</h2>
+          )}
           <span>
             {player.team.city} {player.team.name}
           </span>
