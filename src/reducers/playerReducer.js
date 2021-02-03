@@ -1,3 +1,5 @@
+import orderById from "./orderByHelper";
+
 const initialState = {
   data: [
     {
@@ -19,28 +21,10 @@ const initialState = {
       weight_pounds: 216,
     },
     {
-      first_name: "Jeremy",
-      height_feet: 6,
-      height_inches: 5,
-      id: 267,
-      last_name: "Lamb",
-      position: "G",
-      team: {
-        abbreviation: "IND",
-        city: "Indiana",
-        conference: "East",
-        division: "Central",
-        full_name: "Indiana Pacers",
-        id: 12,
-        name: "Pacers",
-      },
-      weight_pounds: 185,
-    },
-    {
+      id: 237,
       first_name: "LeBron",
       height_feet: 6,
       height_inches: 8,
-      id: 237,
       last_name: "James",
       position: "F",
       team: {
@@ -54,6 +38,24 @@ const initialState = {
       },
       weight_pounds: 250,
     },
+    {
+      id: 267,
+      first_name: "Jeremy",
+      height_feet: 6,
+      height_inches: 5,
+      last_name: "Lamb",
+      position: "G",
+      team: {
+        abbreviation: "IND",
+        city: "Indiana",
+        conference: "East",
+        division: "Central",
+        full_name: "Indiana Pacers",
+        id: 12,
+        name: "Pacers",
+      },
+      weight_pounds: 185,
+    },
   ],
 };
 
@@ -64,8 +66,11 @@ const PlayerReducer = (state = initialState, action) => {
     case "GET_PLAYER":
       return { ...state, loading: true };
     case "RECIEVE_PLAYER":
-      newData = state.data.concat([action.json]);
-      return { ...state, data: newData, loading: false };
+      return {
+        ...state,
+        data: orderById([...state.data, action.json]),
+        loading: false,
+      };
     case "REMOVE_PLAYER":
       newData = state.data.filter((player) => player.id !== action.id);
       return { ...state, data: newData, loading: false };

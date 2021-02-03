@@ -10,7 +10,7 @@ import { getMainColor } from "nba-color";
 import { removePlayer } from "../../../actions/playerActions";
 import { removePlayerStats } from "../../../actions/statsActions";
 
-let RadarCard = ({ player, stats, isOffenseStats, removePlayer }) => {
+let PieCard = ({ player, stats, isOffenseStats, removePlayer }) => {
   const Icon = NBAIcons[player.team.abbreviation];
 
   const data = () => {
@@ -108,5 +108,5 @@ const mapDispatchtoProps = {
   removePlayerStats: removePlayerStats,
 };
 
-RadarCard = connect(mapStatetoProps, mapDispatchtoProps)(RadarCard);
-export default RadarCard;
+PieCard = connect(mapStatetoProps, mapDispatchtoProps)(PieCard);
+export default PieCard;

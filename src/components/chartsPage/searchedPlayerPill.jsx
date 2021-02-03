@@ -5,6 +5,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { removePlayer } from "../../actions/playerActions";
+import { removePlayerStats } from "../../actions/statsActions";
 
 let SearchedPlayerPill = ({ player, removePlayer }) => {
   const primary = getMainColor(player.team.abbreviation).hex;
@@ -17,7 +18,10 @@ let SearchedPlayerPill = ({ player, removePlayer }) => {
         backgroundColor: primary,
         color: secondary,
       }}
-      onClick={() => removePlayer(player.id)}
+      onClick={() => {
+        removePlayer(player.id);
+        removePlayerStats(player.id);
+      }}
     >
       {`${player.first_name} ${player.last_name}`}
       <span
@@ -37,7 +41,11 @@ const mapStatetoProps = (_, ownProps) => ({
 
 const mapDispatchToProps = {
   removePlayer: removePlayer,
+  removePlayerStats: removePlayerStats,
 };
 
-SearchedPlayerPill = connect(mapStatetoProps, mapDispatchToProps)(SearchedPlayerPill);
+SearchedPlayerPill = connect(
+  mapStatetoProps,
+  mapDispatchToProps
+)(SearchedPlayerPill);
 export default SearchedPlayerPill;

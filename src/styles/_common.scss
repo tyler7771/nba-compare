@@ -10,6 +10,12 @@ body,
   font-family: Helvetica, sans-serif;
 }
 
+.App {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   background: $blue !important;
 }

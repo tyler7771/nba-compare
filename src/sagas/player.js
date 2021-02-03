@@ -1,7 +1,9 @@
 import { put, takeLatest } from "redux-saga/effects";
 
 function* fetchPlayer({ id }) {
-  const json = yield fetch(`https://www.balldontlie.io/api/v1/players/${id}`).then((response) => response.json());
+  const json = yield fetch(
+    `https://www.balldontlie.io/api/v1/players/${id}`
+  ).then((response) => response.json());
 
   yield put({
     type: "RECIEVE_PLAYER",
